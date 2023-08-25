@@ -4,7 +4,7 @@ import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 //import { requirePropFactory } from '@mui/material';
 //import { requirePropFactory } from '@mui/material';
-
+import styled from "styled-components";
 
 
 function Slider() {
@@ -12,7 +12,7 @@ function Slider() {
   const[items, setItem]=React.useState(data);
   const[index, setIndex]=React.useState(0);
 
-//this will run in 2 situation: when items OR index cagnge
+//this will run in 2 situation: when items OR index change
   React.useEffect (() => {
     if(index <0) {
       setIndex(data.length-1);
@@ -26,17 +26,15 @@ function Slider() {
   React.useEffect(() => {
     let slide =setInterval(()=> {
       setIndex(index+1)
-    }, 5000);
+    }, 8000);
     return () => clearInterval(slide);
   }, [index])
 
 
   return (
     <section className="slider-container">
-    
     <div className="slider-banner">
     <div className="slider-wrapper">
-        
         {items.map((item, itemIndex) => {
           const {id, image, name, title, text}=item;
           let position="nextSlide";
@@ -52,8 +50,8 @@ function Slider() {
             </div>
               
             <div className="info-slider">
-            <h1>{title}</h1>
-              <p>{text}</p>       
+            <h1 className="slider-heading">{title}</h1>
+              <p cladsName="slider-paragraph">{text}</p>       
               <button>Show me</button>
             </div>
           </article>
@@ -71,6 +69,9 @@ function Slider() {
   </section>
   )
 }
+
+
+
 
 export default Slider
 
