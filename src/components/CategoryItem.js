@@ -1,5 +1,6 @@
 import React from 'react';
 import Tilt from 'react-parallax-tilt';
+import { Link } from "react-router-dom";
 
 function CategoryItem({category}) {
     const{id, image, title}=category;
@@ -13,7 +14,7 @@ function CategoryItem({category}) {
 
       <div className="info-category">
       <h2>{title}</h2>
-      <button>SHOP NOW</button>
+      <Link to="/products">SEE MORE</Link>
       
     
  </div>

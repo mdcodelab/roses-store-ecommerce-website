@@ -1,5 +1,13 @@
 import { requirePropFactory } from "@mui/material"
 
+export const dataRoses_1 = [
+  {
+    id: 1,
+    image:"../images/roses/red/red_1.jpg",
+    title: "Red",
+  }
+];
+
 export const dataRoses =[
     {
         id: 1,
@@ -137,42 +145,42 @@ export const dataRoses =[
         title: "Blue"
     },
     {
-        id: 24,
+        id: 28,
         image: require("../images/roses/blue/blue_4.jpg"),
         title: "Blue"
     },
     {
-        id: 25,
-        image: require("../images/roses/multicolour/multi_1.jpg"),
-        title: "Multicolour"
-    },
-    {
-        id: 26,
-        image: require("../images/roses/multicolour/multi_2.jpg"),
-        title: "Multicolour"
-    },
-    {
-        id: 27,
-        image: require("../images/roses/multicolour/multi_3.jpg"),
-        title: "Multicolour"
-    },
-    {
-        id: 28,
-        image: require("../images/roses/multicolour/multi_4.jpg"),
-        title: "Multicolour"
-    },
-    {
         id: 29,
+        image: require("../images/roses/multicolour/multi_1.jpg"),
+        title: "Multicolor"
+    },
+    {
+        id: 30,
+        image: require("../images/roses/multicolour/multi_2.jpg"),
+        title: "Multicolor"
+    },
+    {
+        id: 31,
+        image: require("../images/roses/multicolour/multi_3.jpg"),
+        title: "Multicolor"
+    },
+    {
+        id: 32,
+        image: require("../images/roses/multicolour/multi_4.jpg"),
+        title: "Multicolor"
+    },
+    {
+        id: 33,
         image: require("../images/roses/green/green_1.jpg"),
         title: "Green"
     },
     {
-        id: 30,
+        id: 34,
         image: require("../images/roses/green/green_2.jpg"),
         title: "Green"
     },
     {
-        id: 31,
+        id: 35,
         image: require("../images/roses/green/green_3.jpg"),
         title: "Green"
     }

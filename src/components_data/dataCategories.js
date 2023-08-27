@@ -9,8 +9,8 @@ export const dataCategories= [
     },
 
     {id:2,
-        name: "Basckets",
-        image: require("../images/categories/basckets.jpg"),
+        name: "Baskets",
+        image: require("../images/categories/baskets.jpg"),
         title: "Baskets"
     },
 

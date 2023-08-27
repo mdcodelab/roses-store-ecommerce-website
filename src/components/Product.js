@@ -12,9 +12,9 @@ function Product({product}) {
   return (
     <div className="product-container">
         
-          <div className="circle"></div>
+        <div className="circle"></div>
         <div className="product-image">
-          <img src={image} alt={title}></img>
+        <img src={image} alt={title}></img>
         </div>
         
         <div className="product-info">

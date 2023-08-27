@@ -1,8 +1,8 @@
 ::root {
 --primary-color: #fff;
 --text-color:#555;
---heading-color: rgba(136, 8, 8, 1); 
---radius: 2rem;
+--heading-color: #880808; 
+--radius: 3.5rem;
 --shadowLarge: box-shadow: rgba(0, 0, 0, 0.25) 0rem 5.4rem 5.5rem, rgba(0, 0, 0, 0.12) 0rem -1.2rem 3rem, 
 rgba(0, 0, 0, 0.12) 0rem 0.4rem 0.6rem, rgba(0, 0, 0, 0.17) 0rem 1.2rem 1.3rem, rgba(0, 0, 0, 0.09)
  0rem -0.3rem 0.5rem;
@@ -26,6 +26,13 @@ html {
   font-size: 62.5%;
 }
 
+div.line {
+  height: 0.3rem;
+  width: 20rem;
+  background: var(--headingColor);
+  margin: 0 auto;
+}
+
 /* SLIDER */
 section.slider-container {
   width: 100%;
@@ -36,7 +43,6 @@ section.slider-container {
   background-position: center;
   background-attachment: fixed;
   position: relative;
-  background-attachment: fixed;
   box-shadow: var(--shadowSmall);
 }
 
@@ -230,18 +236,23 @@ div.image-slider {
 
 /* CATEGORIES */
 section.categories {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-gap: 2rem;
   width: 100%;
-  height: 75vh;
-  padding: 7rem 5rem;
+  height: 100%;
+  padding: 3rem;
+  flex-wrap: wrap;
 }
 
 div.category-container {
-  width: 22%;
   height: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadowSmall);
 }
+
 div.category {
   width: 100%;
   height: 35rem;
@@ -262,9 +273,7 @@ div.category img {
   height: 100%;
   border-radius: 0.5rem;
   object-fit: cover;
-  box-shadow: rgba(0, 0, 0, 0.25) 0rem 5.4rem 5.5rem, rgba(0, 0, 0, 0.12) 0rem -1.2rem 3rem, 
-  rgba(0, 0, 0, 0.12) 0rem 0.4rem 0.6rem, rgba(0, 0, 0, 0.17) 0rem 1.2rem 1.3rem, rgba(0, 0, 0, 0.09)
-   0rem -0.3rem 0.5rem;
+  box-shadow: var(--shadowSmall);
    transform: translateZ(2.5rem);
    opacity: 1;
    border: none;
@@ -298,7 +307,7 @@ div.category h2 {
   background:  rgba(136, 8, 8, 0.4);
 }
 
-div.category button {
+div.category button, div.category a {
 cursor: pointer;
 border: none;
 padding: 0.5rem 1rem;
@@ -307,6 +316,23 @@ border-radius: 0.5rem;
 background-color: #fff;
 box-shadow: rgba(0, 0, 0, 0.55) 0.1rem 0.5rem 1.5rem;
 text-align: center;
+}
+
+@media only screen and (max-width: 1150px) {
+  section.categories {
+    grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 2rem;
+  }
+}
+
+
+@media only screen and (max-width: 500px) {
+  section.categories {
+    grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 2rem;
+  }
 }
 
 @media only screen and (max-width: 395px) {
@@ -321,11 +347,13 @@ text-align: center;
   }
 }
 
-/* -- PRODUCTS --- */
+
+
+/* --Popular Products --- */
 section.products {
 width: 100%;
 height: 100%;
-padding: 4rem 7rem;
+padding: 3rem 7rem;
 display: flex;
 flex-wrap: wrap;
 align-items: center;
@@ -336,11 +364,10 @@ overflow: hidden;
 div.product-container {
   width: 28rem;
   height: 35rem;
-  box-shadow: rgba(0, 0, 0, 0.25) 0rem 5.4rem 5.5rem, rgba(0, 0, 0, 0.12) 0rem -1.2rem 3rem, 
-  rgba(0, 0, 0, 0.12) 0rem 0.4rem 0.6rem, rgba(0, 0, 0, 0.17) 0rem 1.2rem 1.3rem, rgba(0, 0, 0, 0.09)
-   0rem -0.3rem 0.5rem;
+  box-shadow: var(--shadowSmall);
    cursor: pointer;
   position: relative;
+  border-radius: var(--radius);
   transition: all 0.5s ease;
 }
 
@@ -418,9 +445,6 @@ div.product-container {
 }
 
 
-
-
-
 /* FOOTER */
 section.footer-container {
   width: 100%;
@@ -434,6 +458,13 @@ div.footer-left {
   height: 100%;
   padding: 2rem;
   flex-direction: column;
+}
+
+div.footer-left h1 {
+  color: rgba(136, 8, 8, 1);
+    font-family: "Tangerine", cursive;
+    font-size: 4rem;
+    font-weight: bold;
 }
 
 div.footer-left p {
@@ -450,6 +481,7 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 margin: 0 auto;
+padding-top: 1.5rem;
 }
 
 div.social-icon {

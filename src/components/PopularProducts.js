@@ -4,7 +4,7 @@ import Product from "./Product"
 
 console.log(popularProducts);
 
-function Products() {
+function PopularProducts() {
 
   const[popular, setPopular]=React.useState(popularProducts);
   
@@ -19,4 +19,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default PopularProducts;

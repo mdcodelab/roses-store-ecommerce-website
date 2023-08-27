@@ -51,7 +51,7 @@ function Slider() {
               
             <div className="info-slider">
             <h1 className="slider-heading">{title}</h1>
-              <p cladsName="slider-paragraph">{text}</p>       
+              <p className="slider-paragraph">{text}</p>       
               <button>Show me</button>
             </div>
           </article>
