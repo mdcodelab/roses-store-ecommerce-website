@@ -25,11 +25,11 @@ function Footer() {
 
             <ul>
                 <li><a href="#">Home</a></li>
+                <li><a href="#">All Products</a></li>
                 <li><a href="#">Account</a></li>
                 <li><a href="#">Order tracking</a></li>
-                <li><a href="#">Home</a></li>
                 <li><a href="#">Wishlist</a></li>
-                <li><a href="#">Terms</a></li>
+                <li><a href="#">Terms & conditions</a></li>
             </ul>
         </div>
 

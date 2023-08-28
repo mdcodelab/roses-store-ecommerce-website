@@ -3,6 +3,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import {Badge} from '@mui/material';
 import ShoppingCartOutlined from '@mui/icons-material/ShoppingCart';
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 
 function Navbar() {
@@ -12,17 +13,17 @@ function Navbar() {
       <div className="navbar-wrapper">
         <div className="left">
             <span className="language">EN </span>
-            <div className="search-container">
-                <input type="text" className="search"></input>
-                <SearchIcon style={{color: "gray", fontSize: "18px"}} className="search-icon"></SearchIcon>
+            <div className="menu-links">
+              <Link to="/" className="menuItem">HOME</Link>
+              <Link to="/products" className="menuItem">PRODUCTS</Link>
             </div>
         </div>
         <div className="center">
             <h1 className="logo">LoveRoses</h1>
         </div>
         <div className="right">
-            <a href="#" className="menuItem">REGISTER</a>
-            <a href="#" className="menuItem">SIGN IN</a>
+            <Link to="" className="menuItem">REGISTER</Link>
+            <Link to="" className="menuItem">LOGIN</Link>
             <div className="menuItem">
             <Badge badgeContent={4} color="primary"><ShoppingCartOutlined/></Badge>
             </div>
@@ -67,19 +68,22 @@ const Wrapper = styled.section`
     color: rgba(136, 8, 8, 1);
   }
 
-  div.search-container {
-    border: 1px solid rgba(136, 8, 8, 1);
-    border-radius: 0.3rem;
+  div.menu-links {
     display: flex;
     align-items: center;
     margin-left: 2.5rem;
     padding: 0.5rem;
   }
 
-  input.search {
-    border: none;
-    outline: none;
-  }
+  a {
+    letter-spacing: 0.08rem; 
+    transition: all 0.5s ease;
+
+   }
+
+   a:hover {
+    letter-spacing: 0.12rem;
+   }
 
   /*center */
   h1.logo, h1.logo-bis {
@@ -112,8 +116,6 @@ const Wrapper = styled.section`
       font-size: 50%;
     }
   }
-
-  
 
   @media only screen and (max-width: 708px) {
     html {
@@ -161,6 +163,11 @@ const Wrapper = styled.section`
       width: 15rem;
       height: 3rem;
     }
+    a.menuItem {
+      letter-spacing: 0.04rem;
+      font-size: 1.2rem;
+
+    }
     input.search {
       width: 100%;
     }
@@ -173,7 +180,7 @@ const Wrapper = styled.section`
     }
     a.menuItem,
     div.enuItem {
-      font-size: 1.2rem;
+      white-space: nowrap;
     }
     div.navbar-wrapper {
       padding: 1rem;

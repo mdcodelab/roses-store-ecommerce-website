@@ -6,7 +6,10 @@ import Slider from "../components/Slider";
 import Categories from "../components/Categories";
 import PopularProducts from "../components/PopularProducts";
 import Newsletter from "../components/Newsletter";
+import Video from "../components/Video";
 import Footer from "../components/Footer";
+
+
 
 export default function Home() {
   return (
@@ -17,6 +20,7 @@ export default function Home() {
       <Categories></Categories>
       <PopularProducts></PopularProducts>
       <Newsletter></Newsletter>
+      <Video></Video>
       <Footer></Footer>
     </div>
   );

@@ -1,7 +1,10 @@
-::root {
+:root {
 --primary-color: #fff;
 --text-color:#555;
 --heading-color: #880808; 
+--heading-color2: rgba(136, 8, 8, 0.5);
+--green-color1: #00AB66;
+--green-color2: #00573F;
 --radius: 3.5rem;
 --shadowLarge: box-shadow: rgba(0, 0, 0, 0.25) 0rem 5.4rem 5.5rem, rgba(0, 0, 0, 0.12) 0rem -1.2rem 3rem, 
 rgba(0, 0, 0, 0.12) 0rem 0.4rem 0.6rem, rgba(0, 0, 0, 0.17) 0rem 1.2rem 1.3rem, rgba(0, 0, 0, 0.09)
@@ -26,11 +29,10 @@ html {
   font-size: 62.5%;
 }
 
-div.line {
-  height: 0.3rem;
-  width: 20rem;
-  background: var(--headingColor);
-  margin: 0 auto;
+h2 {
+  font-size: 3rem;
+  text-align: center;
+  letter-spacing: 0.15rem;
 }
 
 /* SLIDER */
@@ -44,6 +46,7 @@ section.slider-container {
   background-attachment: fixed;
   position: relative;
   box-shadow: var(--shadowSmall);
+  margin-bottom: 3rem;
 }
 
 div.slider-banner {
@@ -83,6 +86,7 @@ div.image-slider {
   width: 40%;
   height: 100%;
   transform: translateZ(100px);
+  margin-right: 2rem;
 }
 
 div.image-slider img {
@@ -92,7 +96,10 @@ div.image-slider img {
   border-radius: 1rem;
   object-fit: cover;
   opacity: 1;
-  box-shadow: rgba(0, 0, 0, 0.25) 0rem 5.4rem 5.5rem, rgba(0, 0, 0, 0.12) 0rem -1.2rem 3rem, rgba(0, 0, 0, 0.12) 0rem 0.4rem 0.6rem, rgba(0, 0, 0, 0.17) 0rem 1.2rem 1.3rem, rgba(0, 0, 0, 0.09) 0rem -0.3rem 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0rem 5.4rem 5.5rem,
+   rgba(0, 0, 0, 0.12) 0rem -1.2rem 3rem,
+    rgba(0, 0, 0, 0.12) 0rem 0.4rem 0.6rem, rgba(0, 0, 0, 0.17) 0rem 1.2rem 1.3rem,
+     rgba(0, 0, 0, 0.09) 0rem -0.3rem 0.5rem;
 }
 
 div.info-slider {
@@ -182,39 +189,51 @@ transform: translateX(100%);
 
 @media only screen and (max-width: 1500px) {
   div.image-slider {
-    height: 70%;
+    height: 80%;
   }
   }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1274px) {
 div.image-slider {
-  height: 55%;
+  height: 65%;
+}
+div.info-slider h1 {
+  font-size: 4.5rem;
+}
+div.info-slider p {
+  font-size: 2rem;
+}
+div.info-slider button {
+  font-size: 2rem;
 }
 }
 
 @media only screen and (max-width: 955px) {
   article {
-    flex-direction: column;
-    padding-top: 10rem;
+    padding-top: 0;
+    margin-top: 2rem;
   }
   div.image-slider {
-    width: 60%;
+    width: 80%;
   }
   div.info-slider h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     width: 100%;
   }
   div.info-slider p {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    width: 100%;
+    line-height: 2.2rem;
   }
   }
-
 
     @media only screen and (max-width: 750px) {
       section.slider-container {
-        height: 70vh;
+        height: 50vh;
       }
-    
+      div.info-slider {
+        width: 70%;
+      }
       div.info-slider p {
         font-size: 2rem;
         line-height: 2rem;
@@ -223,6 +242,49 @@ div.image-slider {
       }  
     }
   
+    @media only screen and (max-width: 600px) {
+      article {
+        flex-direction: column;
+      }
+
+      div.image-slider {
+        width: 80%;
+        height: 40%;
+      }
+      div.info-slider h1 {
+        font-size: 2rem;
+        letter-spacing: 0.1rem;
+        width: 100%;
+        margin: 1rem 0;
+      }  
+      div.info-slider p {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+        letter-spacing: 0.1rem;
+        width: 120%;
+        margin-bottom: 1rem; padding-bottom: 0;
+      }  
+      div.info-slider button {
+        font-size: 1.2rem;
+        letter-spacing: 0.1rem;
+        margin: 0;
+      }  
+    }
+
+    @media only screen and (max-width: 450px) {
+      div.info-slider {
+        width: 90%;
+      } 
+      div.info-slider h1 {
+        margin: 0.5rem 0;
+      }  
+      div.info-slider p {
+        line-height: 1.5rem;
+      }  
+      div.info-slider button {
+        width: 100%;
+      } 
+    }
 
 @media only screen and (max-width: 350px) {
   article {
@@ -236,7 +298,10 @@ div.image-slider {
 
 /* CATEGORIES */
 section.categories {
-  margin-top: 3rem;
+  border: 2px solid black;
+}
+
+section.categories div.category__items {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;
@@ -245,6 +310,35 @@ section.categories {
   height: 100%;
   padding: 3rem;
   flex-wrap: wrap;
+}
+
+section.categories div.line {
+    height: 2.5px;
+    width: 20rem;
+    background: var(--heading-color);
+    margin: 0.5rem auto 3rem;
+    border-radius: 0.3rem;
+}
+
+section.categories button.categories {
+  background-color: var(--heading-color);
+  padding: 1rem 3rem;
+  cursor: pointer;
+  font-size: 2rem;
+  border-radius: 0.3rem;
+  border: none;
+  color: #fff;
+  box-shadow: rgba(255, 255, 255, 0.55) 0.1rem 0.5rem 1.5rem;
+  display: block;
+  margin: 2rem auto 0;
+  text-align: center;
+  letter-spacing: 0.15rem;
+  transition: all 0.5s ease;
+}
+
+section.categories button.categories:hover {
+  color: var(--heading-color);
+  background: var(--heading-color2);
 }
 
 div.category-container {
@@ -259,6 +353,7 @@ div.category {
   display: flex;
   flex-direction: column;
   position: relative;
+  border-radius: var(--radius);
 }
 
 .tilt {
@@ -300,8 +395,8 @@ div.info-category {
 }
 
 div.category h2 {
-  font-size: 3.5rem;
-  margin-bottom: 1.5rem;
+  font-size: 3rem;
+  margin: 1.5rem 0;
   color:   #fff;
   text-shadow: 0.2rem 0.7rem 1rem #333;
   background:  rgba(136, 8, 8, 0.4);
@@ -319,19 +414,17 @@ text-align: center;
 }
 
 @media only screen and (max-width: 1150px) {
-  section.categories {
+  section.categories div.category__items {
     grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  grid-gap: 2rem;
+  grid-gap: 2.5rem;
   }
 }
 
-
 @media only screen and (max-width: 500px) {
-  section.categories {
+  section.categories div.category__items{
     grid-template-columns: 1fr;
   grid-template-rows: repeat(4, 1fr);
-  grid-gap: 2rem;
   }
 }
 
@@ -550,7 +643,7 @@ div.image-payments {
   margin-top: 1rem;
 }
 
-img {
+div.image-payments img {
   width: 5rem;
   height: 3rem;
   object-fit: cover;
@@ -564,6 +657,25 @@ img {
   }
   div.image-payments {
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 528px) {
+  section.footer-container {
+    flex-direction: column;
+  }
+  div.footer-left p {
+    line-height: 2.2rem;
+  }
+  div.social-container {
+    width: 50%;
+    padding: 0;
+    margin-top: 1.5rem;
+    margin-bottom: -3rem;
+  }
+  div.image-payments {
+    width: 50%;
+    margin: 2rem auto 0;
   }
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {dataCategories} from "../components_data/dataCategories";
 import CategoryItem from "./CategoryItem";
-
+import {Link} from "react-router-dom";
 
 
 function Categories() {
@@ -10,10 +10,15 @@ function Categories() {
 
   return (
     <section className="categories">
-    {categories.map((category) => {
-      return <CategoryItem category={category} key={category.id}></CategoryItem>
-    })}
-      
+      <h2>Categories</h2>
+      <div className="line"></div>
+      <div className="category__items">
+        {categories.map((category) => {
+          return (
+            <CategoryItem category={category} key={category.id}></CategoryItem>
+          );
+        })}
+      </div>
     </section>
   );
 }

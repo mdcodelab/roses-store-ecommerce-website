@@ -2,6 +2,7 @@ import React from 'react'
 import {data} from "../components_data/dataSlide"
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import {Link} from "react-router-dom";
 //import { requirePropFactory } from '@mui/material';
 //import { requirePropFactory } from '@mui/material';
 import styled from "styled-components";
@@ -52,7 +53,7 @@ function Slider() {
             <div className="info-slider">
             <h1 className="slider-heading">{title}</h1>
               <p className="slider-paragraph">{text}</p>       
-              <button>Show me</button>
+              <button><Link to="" style={{color: "#fff"}}>Show me</Link></button>
             </div>
           </article>
         })}
