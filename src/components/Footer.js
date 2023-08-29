@@ -5,7 +5,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
-import { requirePropFactory } from '@mui/material';
+import {Link} from "react-router-dom";
 
 function Footer() {
   return (
@@ -24,12 +24,12 @@ function Footer() {
             <h3 className="title">Useful links</h3>
 
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">All Products</a></li>
-                <li><a href="#">Account</a></li>
-                <li><a href="#">Order tracking</a></li>
-                <li><a href="#">Wishlist</a></li>
-                <li><a href="#">Terms & conditions</a></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/products">All Products</Link></li>
+                <li><Link to="/register">Account</Link></li>
+                <li><Link to="/">Order tracking</Link></li>
+                <li><Link to="/">Wishlist</Link></li>
+                <li><Link to="/">Terms & conditions</Link></li>
             </ul>
         </div>
 

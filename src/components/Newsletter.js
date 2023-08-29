@@ -34,8 +34,7 @@ const Wrapper = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
+  margin-top: 4rem;
 
   h1.title {
     font-size: 7rem;

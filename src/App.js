@@ -13,6 +13,7 @@ import Navbar from "./components/Navbar"
 //import Categories from "./components/Categories";
 import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
+import Error from "./pages/Error.js";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/products" element={<AllProduct></AllProduct>}></Route>
+        <Route path="/*" element={<Error></Error>}></Route>
       </Routes>
     </Router>
   );

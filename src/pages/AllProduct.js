@@ -26,10 +26,10 @@ const [ribbons, setRibbons] = React.useState(dataRibbons);
       <Div>
         <section className="list">
           <div className="list__categories">
-            <Link to="/products" className="category__link">All Products</Link>
+            <button type="button" className="btn allProducts"><Link to="/products" className="category__link">All Products</Link></button>
             <Link to="/products" className="category__link"> <span><GiRose></GiRose></span>Roses</Link>
             <Link to="/products" className="category__link"><span><BsBasket2></BsBasket2></span>Baskets</Link>
-            <Link to="/products" className="category__link"><span><BsFillEnvelopePaperHeartFill></BsFillEnvelopePaperHeartFill></span>Wrapping paper</Link>
+            <Link to="/products" className="category__link"><span><BsFillEnvelopePaperHeartFill></BsFillEnvelopePaperHeartFill></span>Wrapping Paper</Link>
             <Link to="/products" className="category__link"><span><GiBowTieRibbon></GiBowTieRibbon></span>Ribbons</Link>
           </div>
         </section>
