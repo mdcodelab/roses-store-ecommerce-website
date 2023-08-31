@@ -14,9 +14,7 @@ function CategoryItem({category}) {
 
       <div className="info-category">
       <h2>{title}</h2>
-      <Link to="/products">SEE MORE</Link>
-      
-    
+      <Link to="/products">SEE MORE</Link> 
  </div>
 
    </div> 

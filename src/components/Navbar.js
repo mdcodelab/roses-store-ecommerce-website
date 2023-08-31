@@ -22,8 +22,8 @@ function Navbar() {
             <h1 className="logo">LoveRoses</h1>
         </div>
         <div className="right">
-            <Link to="" className="menuItem">REGISTER</Link>
-            <Link to="" className="menuItem">LOGIN</Link>
+            <Link to="/register" className="menuItem">REGISTER</Link>
+            <Link to="/" className="menuItem">LOGIN</Link>
             <div className="menuItem">
             <Badge badgeContent={4} color="primary"><ShoppingCartOutlined/></Badge>
             </div>
