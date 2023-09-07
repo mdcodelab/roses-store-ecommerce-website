@@ -17,6 +17,7 @@ import {BsFlower1} from "react-icons/bs";
 import { Link } from "react-router-dom";
 import "aos/dist/aos.css";
 import AOS from "aos";
+import SendIcon from "@mui/icons-material/Send";
 
 
 function AllProduct() {
@@ -31,13 +32,39 @@ function AllProduct() {
 
   React.useEffect(() => {
     AOS.init({
-      duration: 1000, // You can change this value if needed
-      once: true, // Whether animation should happen only once - while scrolling down
-      mirror: false, // Whether elements should animate out while scrolling past them
+      duration: 1000, 
+      once: true,
+      mirror: false,
     });
   }, []);
 
-  
+  //search functionality
+  const [search, setSearch]=React.useState("");
+  const[filteredData, setFilteredData] = React.useState(allData);
+
+  React.useEffect(() => {
+    let filtered = category.filter((data) =>
+      data.title.toLowerCase().includes(search.toLowerCase())
+    );
+    setFilteredData(filtered);
+  }, [search, category]);
+
+
+  const handleInputChange = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
+  //buttons
+  const handleCategory = (data) => {
+    setSearch(""); // Reset the search state
+    setCategory(data);
+  };
+
+
 
   return (
     <Wrapper>
@@ -46,32 +73,37 @@ function AllProduct() {
       <div className="products__wrapper">
         <section className="list">
           <div className="list__categories">
-            <button type="button" onClick={() => setCategory(allData)}>
+            <form onSubmit={handleSubmit}>
+              <input type="text" placeholder="...Search by title" className="form-input" value={search} 
+              onChange={handleInputChange}></input>
+              <button className="form-button"><SendIcon className="icon-button"></SendIcon></button>
+            </form>
+            <button type="button" onClick={() => handleCategory(allData)}>
               <BsFlower1 className="icon"></BsFlower1> All Products
             </button>
-            <button type="button" onClick={() => setCategory(dataRoses)}>
+            <button type="button" onClick={() => handleCategory(dataRoses)}>
               <GiRose className="icon"></GiRose> Roses
             </button>
-            <button type="button" onClick={() => setCategory(dataBaskets)}>
+            <button type="button" onClick={() => setFilteredData(dataBaskets)}>
               <BsBasket2 className="icon"></BsBasket2> Baskets
             </button>
-            <button type="button" onClick={() => setCategory(dataPaper)}>
+            <button type="button" onClick={() => handleCategory(dataPaper)}>
               <BsFillEnvelopePaperHeartFill className="icon"></BsFillEnvelopePaperHeartFill>
               Wrapping Paper
             </button>
-            <button type="button" onClick={() => setCategory(dataRibbons)}>
+            <button type="button" onClick={() => handleCategory(dataRibbons)}>
               <GiBowTieRibbon className="icon"></GiBowTieRibbon> Ribbons
             </button>
           </div>
         </section>
 
         <section className="allProducts">
-        <h3 className="number">{category.length} products.</h3>
+        <h3 className="number">{filteredData.length} products.</h3>
           <div className="category__items">
-            {category.map((item) => {
+            {filteredData.map((item) => {
                 const { id, image, title, price} = item;
                 return (
-                  <div className="category__item" key={id} data-aos="fade-up">
+                  <div className="category__item" key={id} data-aos="zoom-in">
                     <Link className="category__item" to={`/product/${id}`}>
                       <img src={image} alt={title} />
                       <div>
@@ -138,6 +170,24 @@ function AllProduct() {
 
     div.list__categories button:hover {
       transform: translateX(3rem);
+    }
+
+    form {
+      width: 20rem;
+      border: 2px solid black;
+      margin: 0 auto;
+      height: 3.5rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+    }
+
+    form input.form-input {
+      width: 10rem;
+      height: 100%;
+    }
+
+    form button.form-button {
+      width: 5rem;
     }
 
     div.list__categories .icon {
