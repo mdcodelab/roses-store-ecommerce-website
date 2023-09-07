@@ -142,19 +142,17 @@ function AllProduct() {
       margin-bottom: 1rem;
       margin-right: 1rem;
       color: var(--heading-color);
-
-
     }
 
     section.list {
       flex: 0.4;
       padding-left: 2rem;
-      padding-top: 10rem;
+      padding-top: 8rem;
     }
 
     div.list__categories button {
       display: block;
-      width: 20rem;
+      width: 22rem;
       height: 3.5rem;
       margin: 0 auto;
       margin-bottom: 2.5rem;
@@ -173,21 +171,36 @@ function AllProduct() {
     }
 
     form {
-      width: 20rem;
-      border: 2px solid black;
+      width: 22rem;
       margin: 0 auto;
       height: 3.5rem;
       margin-bottom: 2.5rem;
       display: flex;
+      flex-direction: row;
+      align-items: center;
+      position: relative;
     }
 
     form input.form-input {
-      width: 10rem;
-      height: 100%;
+      width: 16.6rem;
+      padding: 1rem 0;
+      position: absolute;
+      border: 0.1rem solid var(--heading-color);
+      border-radius: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    form input.form-input:focus {
+      outline: 0.15rem solid var(--heading-color);
+
     }
 
     form button.form-button {
-      width: 5rem;
+      width: 5.5rem;
+      height: 3.5rem;
+      position: absolute;
+      right: 0;
+      top: 0;
     }
 
     div.list__categories .icon {
@@ -242,7 +255,7 @@ function AllProduct() {
       letter-spacing: 0.12rem;
       display: flex;
       width: 100%;
-    justify-content: space-evenly;
+      justify-content: space-evenly;
     }
 
     a.category__item img {
