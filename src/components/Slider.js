@@ -53,7 +53,7 @@ function Slider() {
             <div className="info-slider">
             <h1 className="slider-heading">{title}</h1>
               <p className="slider-paragraph">{text}</p>       
-              <button><Link to="" style={{color: "#fff"}}>Show me</Link></button>
+              <button><Link to="/news" style={{color: "#fff"}}>Show me</Link></button>
             </div>
           </article>
         })}

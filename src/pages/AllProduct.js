@@ -239,7 +239,7 @@ function AllProduct() {
 
     a.category__item {
       width: 26rem;
-      height: 26rem;
+      height: 28rem;
       display: flex;
       flex-direction: column;
       border-radius: 1rem;
@@ -260,7 +260,7 @@ function AllProduct() {
 
     a.category__item img {
       width: 100%;
-      height: 20rem;
+      height: 22rem;
       object-fit: cover;
       border-radius: 1rem 1rem 0 0;
     }
