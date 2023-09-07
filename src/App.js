@@ -3,7 +3,7 @@ import ProductList from "./pages/PopularProducts"; //viewed
 import ProductPage from "./pages/ProductPage";
 import PopularProducts from "./components/PopularProducts"; //viewed
 import AllProduct from "./pages/AllProduct.js"
-import Product from "./components/Product";
+//import Product from "./components/Product";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
@@ -22,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/products" element={<AllProduct></AllProduct>}></Route>
+        <Route path="products/:id" element={<ProductPage></ProductPage>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/*" element={<Error></Error>}></Route>
       </Routes>

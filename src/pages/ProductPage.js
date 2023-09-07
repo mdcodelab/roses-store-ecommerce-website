@@ -6,6 +6,10 @@ import Newsletter from '../components/Newsletter';
 import { requirePropFactory } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
+import {dataRoses, dataPaper, dataRibbons, dataBaskets} from "../components_data/dataProducts";
+
+const allData={...dataRoses, ...dataPaper, ...dataRibbons, ...dataPaper};
+
 
 function ProductPage() {
   return (

@@ -3,11 +3,15 @@ import ShoppingCart from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import React from 'react';
+import {useParams} from "react-router-dom";
 
 
 
 function Product({product}) {
-  const {id, image, title}=product
+  const {image, title}=product
+
+  const { id } = useParams();
+
 
   return (
     <div className="product-container">
