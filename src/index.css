@@ -761,7 +761,8 @@ select {
 div.productPage-wrapper {
   width: 100%;
   height: 100%;
-  padding: 2rem;
+  padding: 3rem;
+  margin-top: 2rem;
   display: flex;
 }
 
@@ -791,6 +792,9 @@ margin-bottom: 2rem;
 p.product-description {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
+  line-height: 3rem;
+  letter-spacing: 0.1rem;
+  text-align: justify;
 }
 
 p.price {
@@ -825,10 +829,26 @@ div.buttons-container{
   border-radius: 0.3rem;
   border: 0.1rem solid rgba(136, 8, 8, 0.4);
   cursor: pointer;
+  margin-bottom: 2rem;
 }
 
-button.cart {
-  width: 14rem;
+select {
+  margin-bottom: 2rem;
+}
+
+.buttons-2 {
+  width: 38rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttons-2 p {
+  font-size: 1.2rem;
+}
+
+button.cart, a.cart {
+  width: 16rem;
   border: none;
   padding: 1rem 0.5rem;
   border-radius: 0.3rem;
@@ -839,12 +859,33 @@ button.cart {
   cursor: pointer;
   color: #fff;
   background-color: rgba(136, 8, 8, 1);
+  text-transform: capitalize;
   transition: all 0.3S ease-in-out;
 }
 
 button.cart:hover {
   color: rgba(136, 8, 8, 1);
   background: #fff;
+}
+
+@media only screen and (max-width: 770px) {
+div.productPage-wrapper {
+  flex-direction: column;
+}
+.buttons-2 {
+  flex-direction: column;
+  width: 16rem;
+  height: 100%;
+}
+.cart {
+  width: 100%;
+}
+.buttons-2 p {
+  margin: 1rem 0;
+}
+h1.product-title {
+  font-size: 3rem;
+}
 }
 
 @media only screen and (max-width: 570px) {

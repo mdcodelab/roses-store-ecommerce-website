@@ -6,11 +6,23 @@ import Newsletter from '../components/Newsletter';
 import { requirePropFactory } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
-import {useParams} from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 import {dataRoses, dataPaper, dataRibbons, dataBaskets} from "../components_data/dataProducts";
 
 
 function ProductPage() {
+  const [number, setNumber]=React.useState(1);
+
+  function addNumber () {
+    setNumber(prevState => prevState +1);
+  }
+
+function decreaseNumber () {
+if(number > 1) {
+  setNumber(prevState => prevState -1);
+}
+}
+
   const allData=[...dataRoses, ...dataPaper, ...dataRibbons, ...dataPaper];
 const {id}=useParams();
 
@@ -31,7 +43,7 @@ if(!product) {
             <div className="productPage-info-container">
               <h1 className="product-title">{product.title}</h1>
               <p className="product-description">{product.description}</p>
-              <p className="price">{product.price}</p>
+              <p className="price">${product.price}</p>
               <div className="filter-color">
               <select>
                 <option>Color</option>
@@ -43,12 +55,14 @@ if(!product) {
             </div>
             <div className="buttons-container">
                 <div className="buttons-1">
-                  <button className="remove"><RemoveIcon></RemoveIcon></button>
-                  <span className="quantity">1</span>
-                  <button className="add"><AddIcon></AddIcon></button>
+                  <button className="remove" onClick={()=> decreaseNumber()}><RemoveIcon></RemoveIcon></button>
+                  <span className="quantity">{number}</span>
+                  <button className="add" onClick={()=> addNumber()}><AddIcon></AddIcon></button>
                 </div>
                 <div className="buttons-2">
                   <button className="cart">ADD TO CART</button>
+                  <p>OR</p>
+                  <Link className="cart" to="/products">BACK TO PRODUCTS</Link>
                 </div>
             </div>
             </div>
