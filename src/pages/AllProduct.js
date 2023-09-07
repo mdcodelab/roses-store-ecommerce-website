@@ -26,10 +26,7 @@ function AllProduct() {
 
   const [category, setCategory] = React.useState(allData);
 
-  function handleCategory () {
-    setCategory(allData);
-    console.log("all products");
-  }
+  
 
   return (
     <Wrapper>
@@ -38,7 +35,7 @@ function AllProduct() {
       <div className="products__wrapper">
         <section className="list">
           <div className="list__categories">
-            <button type="button" onClick={() => handleCategory()}>
+            <button type="button" onClick={() => setCategory(allData)}>
               <BsFlower1 className="icon"></BsFlower1> All Products
             </button>
             <button type="button" onClick={() => setCategory(dataRoses)}>
@@ -58,73 +55,9 @@ function AllProduct() {
         </section>
 
         <section className="allProducts">
+        <h3 className="number">{category.length} products.</h3>
           <div className="category__items">
-            {category === allData &&
-              category.map((item) => {
-                const { id, image, title, price} = item;
-                return (
-                  <div className="category__item" key={id}>
-                    <Link className="category__item" to={`/product/${id}`}>
-                      <img src={image} alt={title} />
-                      <div>
-                        <p>{title}</p>
-                        <p>${price}</p>
-                      </div>
-                    </Link>
-                  </div>
-                );
-              })}
-
-            {category === dataRoses &&
-              category.map((item) => {
-                const { id, image, title, price } = item;
-                return (
-                  <div className="category__item" key={id}>
-                    <Link className="category__item" to={`/product/${id}`}>
-                      <img src={image} alt={title} />
-                      <div>
-                        <p>{title}</p>
-                        <p>${price}</p>
-                      </div>
-                    </Link>
-                  </div>
-                );
-              })}
-
-            {category === dataBaskets &&
-              category.map((item) => {
-                const { id, image, title, price} = item;
-                return (
-                  <div className="category__item" key={id}>
-                    <Link className="category__item" to={`/product/${id}`}>
-                      <img src={image} alt={title} />
-                      <div>
-                        <p>{title}</p>
-                        <p>${price}</p>
-                      </div>
-                    </Link>
-                  </div>
-                );
-              })}
-
-            {category === dataPaper &&
-              category.map((item) => {
-                const { id, image, title, price} = item;
-                return (
-                  <div className="category__item" key={id}>
-                    <Link className="category__item" to={`/product/${id}`}>
-                      <img src={image} alt={title} />
-                      <div>
-                        <p>{title}</p>
-                        <p>${price}</p>
-                      </div>
-                    </Link>
-                  </div>
-                );
-              })}
-
-            {category === dataRibbons &&
-              category.map((item) => {
+            {category.map((item) => {
                 const { id, image, title, price} = item;
                 return (
                   <div className="category__item" key={id}>
@@ -158,6 +91,16 @@ function AllProduct() {
       height: 100%;
       border-top: 3px solid var(--heading-color);
       border-bottom: 3px solid var(--heading-color);
+    }
+
+    .number {
+      text-align: right;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      margin-right: 1rem;
+      color: var(--heading-color);
+
+
     }
 
     section.list {

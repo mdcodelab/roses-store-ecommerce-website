@@ -6,25 +6,32 @@ import Newsletter from '../components/Newsletter';
 import { requirePropFactory } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
+import {useParams} from "react-router-dom";
 import {dataRoses, dataPaper, dataRibbons, dataBaskets} from "../components_data/dataProducts";
-
-const allData={...dataRoses, ...dataPaper, ...dataRibbons, ...dataPaper};
 
 
 function ProductPage() {
+  const allData=[...dataRoses, ...dataPaper, ...dataRibbons, ...dataPaper];
+const {id}=useParams();
+
+const product = allData.find((product) => product.id === Number(id));
+if(!product) {
+  return <h2>Product not found!</h2>
+}
+
   return (
     <section className="productPage-container">
       <Navbar></Navbar>
       <Announcement></Announcement>
           <div className="productPage-wrapper">
             <div className="productPage-image-container">
-              <img src={require("../images/roses/blue/blue_1.jpg")}></img>
+              <img src={product.image}></img>
             </div>
 
             <div className="productPage-info-container">
-              <h1 className="product-title">Blue rose</h1>
-              <p className="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, tempore.</p>
-              <p className="price">$20</p>
+              <h1 className="product-title">{product.title}</h1>
+              <p className="product-description">{product.description}</p>
+              <p className="price">{product.price}</p>
               <div className="filter-color">
               <select>
                 <option>Color</option>
