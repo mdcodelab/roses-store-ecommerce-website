@@ -15,6 +15,9 @@ import { BsBasket2 } from "react-icons/bs";
 import { GiBowTieRibbon } from "react-icons/gi";
 import {BsFlower1} from "react-icons/bs";
 import { Link } from "react-router-dom";
+import "aos/dist/aos.css";
+import AOS from "aos";
+
 
 function AllProduct() {
   const [roses, setRoses] = React.useState(dataRoses);
@@ -25,6 +28,14 @@ function AllProduct() {
   const allData = [...dataRoses, ...dataBaskets, ...dataPaper, ...dataRibbons];
 
   const [category, setCategory] = React.useState(allData);
+
+  React.useEffect(() => {
+    AOS.init({
+      duration: 1000, // You can change this value if needed
+      once: true, // Whether animation should happen only once - while scrolling down
+      mirror: false, // Whether elements should animate out while scrolling past them
+    });
+  }, []);
 
   
 
@@ -60,7 +71,7 @@ function AllProduct() {
             {category.map((item) => {
                 const { id, image, title, price} = item;
                 return (
-                  <div className="category__item" key={id}>
+                  <div className="category__item" key={id} data-aos="fade-up">
                     <Link className="category__item" to={`/product/${id}`}>
                       <img src={image} alt={title} />
                       <div>
@@ -165,7 +176,7 @@ function AllProduct() {
 
     a.category__item {
       width: 26rem;
-      height: 24rem;
+      height: 26rem;
       display: flex;
       flex-direction: column;
       border-radius: 1rem;
@@ -186,7 +197,8 @@ function AllProduct() {
 
     a.category__item img {
       width: 100%;
-      height: 18rem;
+      height: 20rem;
+      object-fit: cover;
       border-radius: 1rem 1rem 0 0;
     }
 
