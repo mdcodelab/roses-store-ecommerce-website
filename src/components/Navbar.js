@@ -23,7 +23,7 @@ function Navbar() {
         </div>
         <div className="right">
             <Link to="/register" className="menuItem">REGISTER</Link>
-            <Link to="/" className="menuItem">LOGIN</Link>
+            <Link to="/login" className="menuItem">LOGIN</Link>
             <div className="menuItem">
             <Badge badgeContent={4} color="primary"><ShoppingCartOutlined/></Badge>
             </div>
