@@ -9,28 +9,36 @@ import {Link} from "react-router-dom";
 function Navbar() {
   return (
     <Wrapper className="navbar-container">
-    <h1 className="logo-bis">Love Roses</h1>
+      <h1 className="logo-bis">Love Roses</h1>
       <div className="navbar-wrapper">
         <div className="left">
-            <span className="language">EN </span>
-            <div className="menu-links">
-              <Link to="/" className="menuItem">HOME</Link>
-              <Link to="/products" className="menuItem">PRODUCTS</Link>
-            </div>
+          <span className="language">EN </span>
+          <div className="menu-links">
+            <Link to="/" className="menuItem">
+              HOME
+            </Link>
+            <Link to="/products" className="menuItem">
+              PRODUCTS
+            </Link>
+          </div>
         </div>
         <div className="center">
-            <h1 className="logo">LoveRoses</h1>
+          <h1 className="logo">LoveRoses</h1>
         </div>
         <div className="right">
-            <Link to="/register" className="menuItem">REGISTER</Link>
-            <Link to="/login" className="menuItem">LOGIN</Link>
-            <div className="menuItem">
-            <Badge badgeContent={4} color="primary"><ShoppingCartOutlined/></Badge>
-            </div>
+          <Link to="/register" className="menuItem">
+            REGISTER
+          </Link>
+          <Link to="/login" className="menuItem">
+            LOGIN
+          </Link>
+          <div className="menuItem">
+            <Link to="/cart"><Badge badgeContent={4} color="primary"><ShoppingCartOutlined /></Badge></Link>
+          </div>
         </div>
       </div>
-      </Wrapper>
-  )
+    </Wrapper>
+  );
 }
 
 const Wrapper = styled.section`

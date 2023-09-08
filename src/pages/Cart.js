@@ -22,8 +22,8 @@ let styles = {
     
   return (
     <section className="cart-container">
-    <Navbar></Navbar>
     <Announcement></Announcement>
+    <Navbar></Navbar>
       <div className="wrapper-cart">
         <h1 className="cart-title">Your bag</h1>
         <div className="wrapper-cart-top">
