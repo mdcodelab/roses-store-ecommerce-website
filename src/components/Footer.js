@@ -26,10 +26,10 @@ function Footer() {
             <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/products">All Products</Link></li>
-                <li><Link to="/register">Account</Link></li>
-                <li><Link to="/">Order tracking</Link></li>
-                <li><Link to="/">Wishlist</Link></li>
-                <li><Link to="/">Terms & conditions</Link></li>
+                <li><Link to="/register">Register</Link></li>
+                <li><Link to="/order">Order tracking</Link></li>
+                <li><Link to="/wish">Wishlist</Link></li>
+                <li><Link to="/terms">Terms & conditions</Link></li>
             </ul>
         </div>
 

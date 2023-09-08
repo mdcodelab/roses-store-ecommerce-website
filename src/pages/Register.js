@@ -18,7 +18,7 @@ function Register() {
         </form>
         <div className="question">
           <p>Do you already have an account?</p>
-          <Link to="/login">SIGN IN</Link>
+          <Link to="/login">LOGIN</Link>
           <p>OR</p>
           <Link to="/">BACK HOME</Link>
         </div>

@@ -1,20 +1,26 @@
 import React from 'react';
+import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 function Login() {
   return (
-    <section className="register-container">
-   
-    <div className="register-wrapper">
-    <h1 className="register-title">SIGN IN</h1>
-        <form className="register-form">
-            <input placeholder="Username" type="text"></input>
-            <input placeholder="Password" type="password"></input>
-            <button>LOGIN</button>
-            <a href="#" className="forgot-password">Forgot password?</a>
-            <a href="#" className="create-account">Create a new account</a>
+    <section className="login-container">
+      <div className="login-wrapper">
+        <h1 className="register-title">LOGIN</h1>
+        <form className="login-form">
+          <input placeholder="username..." type="text"></input>
+          <input placeholder="password..." type="password"></input>
+          <button>LOGIN</button>
+          <Link to="/*" className="forgot-password">
+            Forgot password?
+          </Link>
+          <div>
+            <Link to="/register" className="create-account">REGISTER</Link>
+            <p>OR</p>
+            <Link to="/">BACK HOME</Link>
+          </div>
         </form>
-    </div>
-      
+      </div>
     </section>
   );
 }
