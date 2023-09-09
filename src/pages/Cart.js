@@ -2,116 +2,89 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Announcement from '../components/Announcement';
 import Footer from '../components/Footer';
-import { green } from '@mui/material/colors';
-import { filledInputClasses, requirePropFactory, SpeedDialIcon } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
+import {MdDeleteOutline} from "react-icons/md";
 import { useGlobalContext } from '../cartContext';
-
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 function Cart() {
-  const {cart}=useGlobalContext();
-const props = {
-  type: "filled"
-}
+  const { cart } = useGlobalContext();
+  console.log(cart);
 
-    
   return (
-    <section className="cart-container">
-    <Announcement></Announcement>
-    <Navbar></Navbar>
+    <Wrapper className="cart-container">
+      <Announcement />
+      <Navbar />
       <div className="wrapper-cart">
         <h1 className="cart-title">Your bag</h1>
         <div className="wrapper-cart-top">
-            <button className="top-btn">CONTINUE SHOPPING</button>
-            <div className="top-texts">
-                <a href="#"className="top-text">Shopping Bag (2)</a>
-                <a href="#" className="top-text">Your wish list (0)</a>
-            </div>
-            <button className="bottom-btn">CHECKOUT NOW</button>
+          <button className="top-btn">CONTINUE SHOPPING</button>
+          <div className="top-texts">
+            <Link to="/wish" className="top-text">
+              Your wish list (0)
+            </Link>
+          </div>
+          <button className="bottom-btn">CHECKOUT NOW</button>
         </div>
-        
-        <div className="wrapper-cart-bottom">
-            <div className="info">Info
-                <div className="product">
-                  <div className="product-detail">
-                    
-                      <img src={require("../images/background/cart_1.jpg")}></img>
-                      <div className="details">
-                    <p className="productname"><b>Product:</b> Rose</p>
-                    <p className="productid"><b>ID:</b> 225627</p>
-                    <p className="produCtcolor" color="red"><b>Color: </b> Red</p>
+  
+        <div className="cart-products">
+          <div className="products">
+            {cart.map((cartItem) => {
+              const{id, title, category, image, price}=cartItem;
+              return (
+                <>
+                  <div className="product" key={id}>
+                    <img src={image} alt={title}></img>
+                    <div className="product-details">
+                      <h2>{title}</h2>
+                      <p>ID: {id}</p>
+                      <p>{category}</p>
+                      <h3>${price}</h3>
+                    </div>
+                    <MdDeleteOutline></MdDeleteOutline>
+                    <div className="product-buttons">
+                      <div>-</div>
+                      <div>1</div>
+                      <div>+</div>
+                    </div>
+                    <div className="product-price">
+                      <p>${price}</p>
+                    </div>
                   </div>
-                  </div>
-                  <div className="price-detail">
-                  
-                  <div className="product-amount-container">
-                  <AddIcon style={{fontSize: "25px"}} className="add-icon"></AddIcon>
-                  <div className="product-amount">
-                    <p className="product-quantity">2</p>
-                    <p className="product-price-price">$ 20</p>
-                  </div>
-                  <RemoveIcon style={{fontSize: "25px"}} className="remove-icon"></RemoveIcon>
-
-                  </div>
-                  </div>
-                </div>
-
-                <hr></hr>
-                <div className="product">
-                  <div className="product-detail">
-                    
-                      <img src={require("../images/background/cart_2.jpg")}></img>
-                      <div className="details">
-                    <p className="productname"><b>Product:</b> Rose</p>
-                    <p className="productid"><b>ID:</b> 225627</p>
-                    <p className="produCtcolor" color="red"><b>Color: </b> Red</p>
-                  </div>
-                  </div>
-                  <div className="price-detail">
-                  
-                  <div className="product-amount-container">
-                  <AddIcon style={{fontSize: "25px"}} className="add-icon"></AddIcon>
-                  <div className="product-amount">
-                    <p className="product-quantity">2</p>
-                    <p className="product-price-price">$ 20</p>
-                  </div>
-                  <RemoveIcon style={{fontSize: "25px"}} className="remove-icon"></RemoveIcon>
-
-                  </div>
-                  </div>
-                </div>
-            </div>
-
-            <div className="summary">
+                  <hr></hr>
+                </>
+              );
+            })}
+          </div>
+          <div className="summary">
             <h1 className="summary-title">ORDER SUMMARY</h1>
-            
             <div className="summary-item">
               <span className="summary-item-text">Subtotal: </span>
               <span className="summary-item-price">$ 40</span>
             </div>
-
             <div className="summary-item">
               <span className="summary-item-text">Shipping discount: </span>
               <span className="summary-item-price">-$ 5.90</span>
             </div>
-
             <div className="summary-item">
-              <span className="summary-item-text">Eastimated shipping: </span>
+              <span className="summary-item-text">Estimated shipping: </span>
               <span className="summary-item-price">$ 5.90</span>
             </div>
-
             <div className="summary-item">
-              <span className="summary-item-text-total" type="total">Total: </span>
+              <span className="summary-item-text-total">Total: </span>
               <span className="summary-item-price">$ 40</span>
             </div>
             <button>CHECKOUT NOW</button>
-            </div>
+          </div>
         </div>
       </div>
-    <Footer></Footer>
-    </section>
+      <Footer />
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.section`
+
+`;
 
 export default Cart;

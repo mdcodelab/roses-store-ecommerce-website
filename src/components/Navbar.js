@@ -1,7 +1,4 @@
 import React from 'react'
-import SearchIcon from '@mui/icons-material/Search';
-import {Badge} from '@mui/material';
-import ShoppingCartOutlined from '@mui/icons-material/ShoppingCart';
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
