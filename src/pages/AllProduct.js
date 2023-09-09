@@ -104,7 +104,7 @@ function AllProduct() {
                 const { id, image, title, price} = item;
                 return (
                   <div className="category__item" key={id} data-aos="zoom-in">
-                    <Link className="category__item" to={`/product/${id}`}>
+                    <Link className="category__item" to={`/products/${id}`}>
                       <img src={image} alt={title} />
                       <div>
                         <p>{title}</p>

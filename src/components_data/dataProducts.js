@@ -64,7 +64,7 @@ export const dataRoses = [
   },
   {
     id: 7,
-    image: require("../images/roses/red/red_3.jpg"),
+    image: require("../images/roses/white/white_3.jpg"),
     title: "Whisper of White",
     category: "roses",
     color: "white",
@@ -104,7 +104,7 @@ export const dataRoses = [
   },
   {
     id: 11,
-    image: require("../images/roses/yellow/yellow_2.jpg"),
+    image: require("../images/roses/yellow/yellow_3.jpg"),
     title: "Golden Heart",
     category: "roses",
     color: "yellow",
@@ -114,7 +114,7 @@ export const dataRoses = [
   },
   {
     id: 12,
-    image: require("../images/roses/yellow/yellow_2.jpg"),
+    image: require("../images/roses/yellow/yellow_4.jpg"),
     title: "Solar Flare",
     category: "roses",
     color: "yellow",

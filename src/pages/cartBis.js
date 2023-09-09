@@ -1,4 +1,4 @@
-import React from 'react';
+mport React from 'react';
 import Navbar from '../components/Navbar';
 import Announcement from '../components/Announcement';
 import Footer from '../components/Footer';
@@ -6,13 +6,17 @@ import { green } from '@mui/material/colors';
 import { filledInputClasses, requirePropFactory, SpeedDialIcon } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { useGlobalContext } from '../cartContext';
 
 
 function Cart() {
-  const {cart}=useGlobalContext();
 const props = {
   type: "filled"
+}
+  
+let styles = {
+  background: props.type === "filled" ? "rgba(136, 8, 8, 1)" : "white",
+  border: props.type === "filled" ? "none" : "rgba(136, 8, 8, 1)",
+  color: props.type === "filled" ? "white" : "rgba(136, 8, 8, 1)"
 }
 
     
@@ -28,7 +32,7 @@ const props = {
                 <a href="#"className="top-text">Shopping Bag (2)</a>
                 <a href="#" className="top-text">Your wish list (0)</a>
             </div>
-            <button className="bottom-btn">CHECKOUT NOW</button>
+            <button props={props.type} style={styles} className="bottom-btn">CHECKOUT NOW</button>
         </div>
         
         <div className="wrapper-cart-bottom">

@@ -2,11 +2,19 @@ import React from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import {Badge} from '@mui/material';
 import ShoppingCartOutlined from '@mui/icons-material/ShoppingCart';
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import { useGlobalContext } from '../cartContext';
 
 
 function Navbar() {
+  const {cart}=useGlobalContext();
+
+  const totalItems = cart.reduce((acc, item)=> {
+    return acc + item.quantity
+  }, 0)
+
   return (
     <Wrapper className="navbar-container">
       <h1 className="logo-bis">Love Roses</h1>
@@ -32,9 +40,14 @@ function Navbar() {
           <Link to="/login" className="menuItem">
             LOGIN
           </Link>
-          <div className="menuItem">
-            <Link to="/cart"><Badge badgeContent={4} color="primary"><ShoppingCartOutlined /></Badge></Link>
-          </div>
+          <Div className="menuItem">
+            <Link to="/cart" className="cart__badge">
+              <div className="cart">
+              <AiOutlineShoppingCart style={{fontSize: "2.5rem"}}/>
+              <div className="product__number">{totalItems}</div>
+              </div>
+            </Link>
+          </Div>
         </div>
       </div>
     </Wrapper>
@@ -43,8 +56,6 @@ function Navbar() {
 
 const Wrapper = styled.section`
   height: 8rem;
-  
-
   div.navbar-wrapper {
     width: 100%;
     height: 100%;
@@ -63,6 +74,10 @@ const Wrapper = styled.section`
   .center,
   .right {
     flex: 1;
+  }
+
+  .right {
+    padding-right: 2rem;
   }
 
   /* left*/
@@ -84,13 +99,13 @@ const Wrapper = styled.section`
     padding: 0.5rem;
   }
 
-  a {
+  a.menuItem {
     letter-spacing: 0.08rem; 
     transition: all 0.5s ease;
 
    }
 
-   a:hover {
+   a.menuItem:hover {
     letter-spacing: 0.12rem;
    }
 
@@ -199,6 +214,30 @@ const Wrapper = styled.section`
       margin: 5% 0;
     }
   }
+`;
+
+const Div = styled.div`
+div.cart {
+  position: relative;
+}
+
+a.cart__badge {
+  display: block;
+}
+
+div.product__number {
+  position: absolute;
+  top: -1rem; left: 1.5rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: var(--heading-color);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+color: #fff;
+}
 `;
 
 export default Navbar

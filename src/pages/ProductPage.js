@@ -8,6 +8,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import {useParams, Link} from "react-router-dom";
 import {dataRoses, dataPaper, dataRibbons, dataBaskets} from "../components_data/dataProducts";
+import { useGlobalContext } from '../cartContext';
 
 
 function ProductPage() {
@@ -23,10 +24,16 @@ if(number > 1) {
 }
 }
 
+
+
   const allData=[...dataRoses, ...dataPaper, ...dataRibbons, ...dataPaper];
 const {id}=useParams();
 
+
+
 const product = allData.find((product) => product.id === Number(id));
+
+const {addToCart}=useGlobalContext();
 if(!product) {
   return <h2>Product not found!</h2>
 }
@@ -60,7 +67,7 @@ if(!product) {
                   <button className="add" onClick={()=> addNumber()}><AddIcon></AddIcon></button>
                 </div>
                 <div className="buttons-2">
-                  <button className="cart">ADD TO CART</button>
+                  <button className="cart" onClick={()=> addToCart(product, number)}>ADD TO CART</button>
                   <p>OR</p>
                   <Link className="cart" to="/products">BACK TO PRODUCTS</Link>
                 </div>
