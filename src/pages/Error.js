@@ -64,6 +64,7 @@ const Wrapper = styled.div`
   div.error-content a.button:hover {
     color: var(--heading-color);
     background: #fff;
+    border: 0.15rem solid var(--heading-color);
   }
 `;
 

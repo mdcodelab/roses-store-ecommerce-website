@@ -40,11 +40,11 @@ if(!product) {
 
   return (
     <section className="productPage-container">
-      <Navbar></Navbar>
       <Announcement></Announcement>
+      <Navbar></Navbar>
           <div className="productPage-wrapper">
             <div className="productPage-image-container">
-              <img src={product.image}></img>
+              <img src={product.image} alt={product.title}></img>
             </div>
 
             <div className="productPage-info-container">
@@ -67,7 +67,7 @@ if(!product) {
                   <button className="add" onClick={()=> addNumber()}><AddIcon></AddIcon></button>
                 </div>
                 <div className="buttons-2">
-                  <button className="cart" onClick={()=> addToCart(product, number)}>ADD TO CART</button>
+                  <Link to="/cart" className="cart" onClick={()=> addToCart(product, number)}>ADD TO CART</Link>
                   <p>OR</p>
                   <Link className="cart" to="/products">BACK TO PRODUCTS</Link>
                 </div>

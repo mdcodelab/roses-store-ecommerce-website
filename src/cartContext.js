@@ -6,7 +6,6 @@ const CartProvider = ({ children }) => {
   const [cart, setCart] = React.useState([]);
 
   const addToCart = (product, quantity) => {
-    console.log(product);
     const existingProduct = cart.find((item) => item.id === product.id);
 
     if (existingProduct) {
@@ -24,13 +23,19 @@ const CartProvider = ({ children }) => {
     }
   };
 
+  const deleteFromCart = (id) => {
+    let remainedItems=cart.filter((item) => item.id !== id);
+    setCart(remainedItems);
+  }
+
 
 
   return (
     <CartContext.Provider value={{ 
         cart, 
         setCart,
-        addToCart }}>
+        addToCart,
+        deleteFromCart }}>
       {children}
     </CartContext.Provider>
   );
