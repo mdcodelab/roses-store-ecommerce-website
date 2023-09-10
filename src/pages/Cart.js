@@ -9,7 +9,18 @@ import styled from "styled-components";
 import {BsFlower1} from "react-icons/bs";
 
 function Cart() {
-  const { cart, deleteFromCart } = useGlobalContext();
+  const { cart, deleteFromCart, productQuantity} = useGlobalContext();
+  const[cartQuantity, setCartQuantity]=React.useState(productQuantity);
+
+  function addCartQuantity () {
+    setCartQuantity(prevState => prevState+1);
+  }
+
+  function decreaseCartQuantity () {
+    if(cartQuantity > 1) {
+      setCartQuantity(prevState => prevState-1);
+    }
+  }
 
   const {id}=useParams();
   function selectedItem () {
@@ -65,12 +76,12 @@ function Cart() {
                       </div>
                       <MdDeleteOutline className="delete__icon" onClick={()=> deleteFromCart(id)}/>
                       <div className="product__buttons">
-                        <div>-</div>
-                        <div>1</div>
-                        <div>+</div>
+                        <div className="decrease" onClick={() => decreaseCartQuantity()}>-</div>
+                        <div className="item__quantity">{cartQuantity}</div>
+                        <div className="increase" onClick={()=> addCartQuantity()}>+</div>
                       </div>
                       <div className="product__price">
-                        <p>${price}</p>
+                        <p className="item__price">${price*cartQuantity}</p>
                       </div>
                     </div>
                     <hr />
@@ -211,6 +222,7 @@ const Wrapper = styled.section`
 
   div.product__empty a.empty:hover {
     background: var(--heading-color);
+    transform: scale(1.05);
   }
 
   div.cart__products__wrapper {
@@ -262,6 +274,28 @@ const Wrapper = styled.section`
     font-size: 2.5rem;
     cursor: pointer;
     color: red;
+  }
+
+  div.product__buttons {
+    width: 8rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+    box-shadow: var(--shadowSmall);
+    border-radius: 0.5rem;
+    border: 0.1rem solid var(--heading-color);
+  }
+
+  div.decrease,
+  div.increase {
+    cursor: pointer;
+  }
+
+  p.item__price {
+    font-size: 2.2rem;
+    font-weight: bold;
   }
 `;
 

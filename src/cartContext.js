@@ -4,6 +4,7 @@ const CartContext = React.createContext();
 
 const CartProvider = ({ children }) => {
   const [cart, setCart] = React.useState([]);
+  const [productQuantity, setProductQuantity]=React.useState(1);
 
   const addToCart = (product, quantity) => {
     const existingProduct = cart.find((item) => item.id === product.id);
@@ -28,6 +29,16 @@ const CartProvider = ({ children }) => {
     setCart(remainedItems);
   }
 
+  const increaseQuantity = () => {
+    setProductQuantity(prevState => prevState+1);
+  }
+
+  const decreaseQuantity = () => {
+    if(productQuantity > 1) {
+      setProductQuantity(prevState => prevState-1);
+    }
+  }
+
 
 
   return (
@@ -35,7 +46,11 @@ const CartProvider = ({ children }) => {
         cart, 
         setCart,
         addToCart,
-        deleteFromCart }}>
+        deleteFromCart,
+        productQuantity,
+        increaseQuantity,
+        decreaseQuantity
+        }}>
       {children}
     </CartContext.Provider>
   );
