@@ -884,6 +884,15 @@ button.cart:hover, a.cart:hover {
   background: #fff;
 }
 
+
+/*ramas aici*/
+@media only screen and (max-width: 1000px) {
+  div.productPage-image-container img {
+    width: 50rem;
+    height: 50rem;
+  }
+}
+
 @media only screen and (max-width: 770px) {
 div.productPage-wrapper {
   flex-direction: column;

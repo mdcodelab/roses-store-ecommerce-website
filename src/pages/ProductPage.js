@@ -16,7 +16,7 @@ const {id}=useParams();
 
 const product = allData.find((product) => product.id === Number(id));
 
-const {addToCart, productQuantity, increaseQuantity, decreaseQuantity}=useGlobalContext();
+const {addToCart, productQuantity, increaseProductQuantity, decreaseProductQuantity}=useGlobalContext();
 if(!product) {
   return <h2>Product not found!</h2>
 }
@@ -45,9 +45,9 @@ if(!product) {
             </div>
             <div className="buttons-container">
                 <div className="buttons-1">
-                  <button className="remove" onClick={()=> decreaseQuantity()}><RemoveIcon></RemoveIcon></button>
+                  <button className="remove" onClick={()=> decreaseProductQuantity()}><RemoveIcon></RemoveIcon></button>
                   <span className="quantity">{productQuantity}</span>
-                  <button className="add" onClick={()=> increaseQuantity()}><AddIcon></AddIcon></button>
+                  <button className="add" onClick={()=> increaseProductQuantity()}><AddIcon></AddIcon></button>
                 </div>
                 <div className="buttons-2">
                   <Link to="/cart" className="cart" onClick={()=> addToCart(product, productQuantity)}>ADD TO CART</Link>

@@ -9,18 +9,9 @@ import styled from "styled-components";
 import {BsFlower1} from "react-icons/bs";
 
 function Cart() {
-  const { cart, deleteFromCart, productQuantity} = useGlobalContext();
+  const { cart, deleteFromCart, productQuantity, decreaseCartQuantity, increaseCartQuantity} = useGlobalContext();
   const[cartQuantity, setCartQuantity]=React.useState(productQuantity);
 
-  function addCartQuantity () {
-    setCartQuantity(prevState => prevState+1);
-  }
-
-  function decreaseCartQuantity () {
-    if(cartQuantity > 1) {
-      setCartQuantity(prevState => prevState-1);
-    }
-  }
 
   const {id}=useParams();
   function selectedItem () {
@@ -33,9 +24,7 @@ function Cart() {
       <Navbar />
       <div className="cart__wrapper">
         <h1 className="cart__title">
-          {" "}
-          <BsFlower1 className="icon__title"></BsFlower1> Your bag
-        </h1>
+          <BsFlower1 className="icon__title"></BsFlower1> Your bag</h1>
         <div className="cart__wrapper__top">
           <Link className="top__btn" to="/products">
             CONTINUE SHOPPING
@@ -73,16 +62,17 @@ function Cart() {
                         <p>ID: {id}</p>
                         <p className="info__category">{category}</p>
                         <h3>${price}</h3>
-                      </div>
-                      <MdDeleteOutline className="delete__icon" onClick={()=> deleteFromCart(id)}/>
-                      <div className="product__buttons">
-                        <div className="decrease" onClick={() => decreaseCartQuantity()}>-</div>
+                        <div className="product__buttons">
+                        <div className="decrease" onClick={() => decreaseCartQuantity(id)}>-</div>
                         <div className="item__quantity">{cartQuantity}</div>
-                        <div className="increase" onClick={()=> addCartQuantity()}>+</div>
+                        <div className="increase" onClick={()=> increaseCartQuantity(id)}>+</div>
+                      </div>
                       </div>
                       <div className="product__price">
+                    <MdDeleteOutline className="delete__icon" onClick={()=> deleteFromCart(id)}/>
                         <p className="item__price">${price*cartQuantity}</p>
                       </div>
+          
                     </div>
                     <hr />
                   </React.Fragment>
@@ -94,23 +84,24 @@ function Cart() {
           <div className="cart__summary">
             <div className="cart__summary__content">
               <h1 className="summary__title">ORDER SUMMARY</h1>
+              <hr></hr>
               <div className="summary__item">
                 <span className="summary-item-text">Subtotal: </span>
-                <span className="summary-item-price">$ 40</span>
+                <span className="summary-item-price">$ {}</span>
               </div>
-              <div className="summary-item">
+              <div className="summary__item">
                 <span className="summary-item-text">Shipping discount: </span>
                 <span className="summary-item-price">-$ 5.90</span>
               </div>
-              <div className="summary-item">
+              <div className="summary__item">
                 <span className="summary-item-text">Estimated shipping: </span>
                 <span className="summary-item-price">$ 5.90</span>
               </div>
-              <div className="summary-item">
+              <div className="summary__item">
                 <span className="summary-item-text-total">Total: </span>
                 <span className="summary-item-price">$ 40</span>
               </div>
-              <Link to="/pay">CHECKOUT NOW</Link>
+              <Link to="/pay" className="order">CHECKOUT NOW</Link>
             </div>
           </div>
         </div>
@@ -126,6 +117,7 @@ const Wrapper = styled.section`
 
   div.cart__wrapper {
     border-top: 0.2rem solid var(--heading-color);
+    border-bottom: 0.2rem solid var(--heading-color);
   }
 
   div.cart__wrapper h1.cart__title {
@@ -159,10 +151,11 @@ const Wrapper = styled.section`
     align-items: center;
     justify-content: space-evenly;
     font-size: 1.5rem;
-    padding: 1rem;
+    padding: 2rem;
   }
 
   div.cart__wrapper__top a {
+    display: block;
     padding: 0.7rem 1.5rem;
     border-radius: 0.5rem;
     text-align: center;
@@ -239,11 +232,12 @@ const Wrapper = styled.section`
   div.product__item {
     display: flex;
     padding: 2rem 3rem;
-    width: 80rem;
+    width: 85rem;
     margin: 0 auto;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid black;
+    box-shadow: var(--shadowSmall);
+    border-radius: 1rem;
   }
 
   div.product__item img {
@@ -274,11 +268,14 @@ const Wrapper = styled.section`
     font-size: 2.5rem;
     cursor: pointer;
     color: red;
+    display: block;
+    margin-right: 3rem;
   }
 
   div.product__buttons {
     width: 8rem;
-    padding: 1rem;
+    padding: 0.5rem;
+    margin-top: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -296,6 +293,98 @@ const Wrapper = styled.section`
   p.item__price {
     font-size: 2.2rem;
     font-weight: bold;
+  }
+
+  div.product__price {
+    display: flex;
+  }
+
+  div.cart__summary {
+    width: 100%;
+  }
+
+  div.cart__summary__content {
+    width: max-content;
+    margin: 2rem auto;
+    padding: 1.5rem 30rem;
+    border: 0.2rem dotted var(--heading-color);
+    border-radius: 1rem;
+  }
+
+  div.cart__summary__content h1 {
+    font-size: 2.5rem;
+    letter-spacing: 0.15rem;
+    color: var(--green-color2);
+  }
+
+  div.summary__item {
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.2rem;
+  }
+
+  a.order {
+    font-size: 2rem;
+    padding: 0.5rem 2rem;
+    text-align: center;
+    color: #fff;
+    background: var(--heading-color);
+    border-radius: 0.5rem;
+    box-shadow: var(--shadowSmall);
+    display: block;
+    letter-spacing: 0.2rem;
+    transition: all 0.5s ease;
+  }
+
+  a.order:hover {
+    color: var(--heading-color);
+    background: #fff;
+    border: 0.1rem solid var(--heading-color);
+  }
+
+  @media only screen and (max-width: 900px) {
+    div.cart__wrapper__top {
+      flex-direction: column;
+    }
+    div.cart__wrapper__top a {
+      margin-bottom: 1.5rem;
+    }
+    div.product__item {
+      width: 100%;
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      justify-items: center;
+      gap: 2rem;
+      height: 45vh;
+    }
+    div.cart__summary__content {
+      padding: 1.5rem 20%;
+    }
+    div.cart__summary__content h1 {
+      font-size: 2.2rem;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+div.product__item {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+grid-template-columns: 1fr;
+height: 52vh;
+align-items: center;
+justify-items: center;
+}
+div.product__item img {
+  width: 12rem;
+  height: 12rem;
+  padding: 0;
+}
+div.product__price{
+margin-left: -10rem;
+}
   }
 `;
 
