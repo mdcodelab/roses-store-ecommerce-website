@@ -4,44 +4,40 @@ const CartContext = React.createContext();
 
 const CartProvider = ({ children }) => {
   const [cart, setCart] = React.useState([]);
-  const [productQuantity, setProductQuantity] = React.useState(1);
+  const [productQuantity]=React.useState(1);
 
-  const addToCart = (product, quantity) => {
-    const existingProduct = cart.find((item) => item.id === product.id);
 
-    if (existingProduct) {
-      //if exists, update the quantity
-      setCart(
-        cart.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
-        )
-      );
+
+  const addToCart = (product) => {
+    const existingProductIndex = cart.findIndex(
+      (item) => item.id === product.id
+    );
+
+    const updatedCart = [...cart];
+
+    if (existingProductIndex !== -1) {
+      // If the product exists, update its quantity
+      updatedCart[existingProductIndex] = {
+        ...updatedCart[existingProductIndex],
+        quantity: updatedCart[existingProductIndex].quantity + 1,
+      };
     } else {
-      // if does not exists, it will be added
-      setCart([...cart, { ...product, quantity }]);
+      // If the product doesn't exist, add it to the cart with quantity of 1
+      updatedCart.push({ ...product, quantity: 1 });
     }
+
+    setCart(updatedCart);
   };
+
+
+
 
   const deleteFromCart = (id) => {
     let remainedItems = cart.filter((item) => item.id !== id);
     setCart(remainedItems);
   };
 
-  // Quantities from the ProductPage
-  const decreaseProductQuantity = () => {
-    if (productQuantity > 1) {
-      setProductQuantity((prevState) => prevState - 1);
-    }
-  };
-
-  const increaseProductQuantity = (id) => {
-    
-    setProductQuantity((prevState) => prevState + 1);
-  };
-
-  // Quantities from the cart
+  //functions from the cart page
   const increaseCartQuantity = (id) => {
     setCart((prevCart) => {
       return prevCart.map((item) =>
@@ -60,18 +56,44 @@ const CartProvider = ({ children }) => {
     });
   };
 
+
+
+  // const increaseProductQuantity = (id) => {
+    
+  //   setProductQuantity((prevState) => prevState + 1);
+  // };
+
+  // // Quantities from the cart
+  // const increaseCartQuantity = (id) => {
+  //   setCart((prevCart) => {
+  //     return prevCart.map((item) =>
+  //       item.id === id ? { ...item, quantity: (item.quantity || 0) + 1 } : item
+  //     );
+  //   });
+  // };
+
+
+  // const decreaseCartQuantity = (id) => {
+  //   console.log("decrease");
+  //   setCart((prevCart) => {
+  //     return prevCart.map((item) =>
+  //       item.id === id && item.quantity > 1
+  //         ? { ...item, quantity: item.quantity - 1 }
+  //         : item
+  //     );
+  //   });
+  // };
+
   return (
     <CartContext.Provider
       value={{
         cart,
         setCart,
         addToCart,
-        deleteFromCart,
         productQuantity,
-        increaseProductQuantity,
-        decreaseProductQuantity,
+        deleteFromCart,
         increaseCartQuantity,
-        decreaseCartQuantity,
+        decreaseCartQuantity
       }}
     >
       {children}

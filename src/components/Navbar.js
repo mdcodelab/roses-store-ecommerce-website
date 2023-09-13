@@ -8,9 +8,14 @@ import { useGlobalContext } from '../cartContext';
 function Navbar() {
   const {cart}=useGlobalContext();
 
-  const totalItems = cart.reduce((acc, item)=> {
-    return acc + item.quantity
-  }, 0)
+  const totalItems = cart.reduce((acc, item) => {
+    if (typeof item.quantity === "number") {
+      return acc + item.quantity;
+    } else {
+      return acc;
+    }
+  }, 0);
+
 
   return (
     <Wrapper className="navbar-container">
@@ -41,7 +46,7 @@ function Navbar() {
             <Link to="/cart" className="cart__badge">
               <div className="cart">
               <AiOutlineShoppingCart style={{fontSize: "2.5rem"}}/>
-              <div className="product__number">{totalItems}</div>
+              <div className="product__number">{cart.length}</div>
               </div>
             </Link>
           </Div>

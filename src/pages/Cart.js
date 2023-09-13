@@ -9,8 +9,8 @@ import styled from "styled-components";
 import {BsFlower1} from "react-icons/bs";
 
 function Cart() {
-  const { cart, deleteFromCart, productQuantity, decreaseCartQuantity, increaseCartQuantity} = useGlobalContext();
-  const[cartQuantity, setCartQuantity]=React.useState(productQuantity);
+  const { cart, deleteFromCart, increaseCartQuantity, decreaseCartQuantity} = useGlobalContext();
+  
 
 
   const {id}=useParams();
@@ -18,6 +18,13 @@ function Cart() {
   let item = cart.find((item) => item.id === id)
   }
 
+  const subtotal = cart.reduce((acc, cart) => {
+    return acc + cart.price * cart.quantity;
+  }, 0);
+
+const estimatedShipping = 5.9
+const estimatedDiscount=5.9
+ 
   return (
     <Wrapper className="cart__container">
       <Announcement />
@@ -50,7 +57,7 @@ function Cart() {
               </div>
             ) : (
               cart.map((cartItem) => {
-                const { id, title, category, image, price } = cartItem;
+                const { id, title, category, image, price, quantity } = cartItem;
                 return (
                   <React.Fragment key={id}>
                     <div className="product__item">
@@ -63,14 +70,14 @@ function Cart() {
                         <p className="info__category">{category}</p>
                         <h3>${price}</h3>
                         <div className="product__buttons">
-                        <div className="decrease" onClick={() => decreaseCartQuantity(id)}>-</div>
-                        <div className="item__quantity">{cartQuantity}</div>
+                        <div className="decrease" onClick={()=> decreaseCartQuantity(id)} >-</div>
+                        <div className="item__quantity">{cartItem.quantity}</div>
                         <div className="increase" onClick={()=> increaseCartQuantity(id)}>+</div>
                       </div>
                       </div>
                       <div className="product__price">
                     <MdDeleteOutline className="delete__icon" onClick={()=> deleteFromCart(id)}/>
-                        <p className="item__price">${price*cartQuantity}</p>
+                        <p className="item__price">${price*quantity}</p>
                       </div>
           
                     </div>
@@ -87,7 +94,7 @@ function Cart() {
               <hr></hr>
               <div className="summary__item">
                 <span className="summary-item-text">Subtotal: </span>
-                <span className="summary-item-price">$ {}</span>
+                <span className="summary-item-price">$ {subtotal}</span>
               </div>
               <div className="summary__item">
                 <span className="summary-item-text">Shipping discount: </span>
@@ -99,7 +106,7 @@ function Cart() {
               </div>
               <div className="summary__item">
                 <span className="summary-item-text-total">Total: </span>
-                <span className="summary-item-price">$ 40</span>
+                <span className="summary-item-price">$ {subtotal + estimatedShipping - estimatedDiscount}</span>
               </div>
               <Link to="/pay" className="order">CHECKOUT NOW</Link>
             </div>

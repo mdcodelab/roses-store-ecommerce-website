@@ -822,7 +822,7 @@ div.buttons-container {
   display: flex;
   flex-direction: column;
   width: 14rem;
-  height: 10rem;
+  height: 16rem;
 }
 
 .buttons-1 {
@@ -876,6 +876,8 @@ button.cart, a.cart {
   color: #fff;
   background-color: rgba(136, 8, 8, 1);
   text-transform: capitalize;
+  display: block;
+  margin-bottom: 1.5rem;
   transition: all 0.3S ease-in-out;
 }
 
@@ -885,7 +887,11 @@ button.cart:hover, a.cart:hover {
 }
 
 
-/*ramas aici*/
+div.buttons-container p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
 @media only screen and (max-width: 1000px) {
   div.productPage-image-container img {
     width: 50rem;
