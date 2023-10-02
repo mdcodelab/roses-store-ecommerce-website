@@ -22,8 +22,9 @@ function Cart() {
     return acc + cart.price * cart.quantity;
   }, 0);
 
-const estimatedShipping = 5.9
-const estimatedDiscount=5.9
+let estimatedDiscount=5.9
+
+let estimatedShipping = subtotal >=50 ? 0: 5.9 
  
   return (
     <Wrapper className="cart__container">
@@ -61,25 +62,44 @@ const estimatedDiscount=5.9
                 return (
                   <React.Fragment key={id}>
                     <div className="product__item">
-                      <Link to={`/products/${id}`} onClick={()=> selectedItem(id)}>
+                      <Link
+                        to={`/products/${id}`}
+                        onClick={() => selectedItem(id)}
+                      >
                         <img src={image} alt={title} />
                       </Link>
                       <div className="product__details">
                         <h2>{title}</h2>
-                        <p>ID: {id}</p>
-                        <p className="info__category">{category}</p>
+                        <div className="paragraphs">
+                          <p>ID: {id}</p>
+                          <p className="info__category">{category}</p>
+                        </div>
                         <h3>${price}</h3>
                         <div className="product__buttons">
-                        <div className="decrease" onClick={()=> decreaseCartQuantity(id)} >-</div>
-                        <div className="item__quantity">{cartItem.quantity}</div>
-                        <div className="increase" onClick={()=> increaseCartQuantity(id)}>+</div>
-                      </div>
+                          <div
+                            className="decrease"
+                            onClick={() => decreaseCartQuantity(id)}
+                          >
+                            -
+                          </div>
+                          <div className="item__quantity">
+                            {cartItem.quantity}
+                          </div>
+                          <div
+                            className="increase"
+                            onClick={() => increaseCartQuantity(id)}
+                          >
+                            +
+                          </div>
+                        </div>
                       </div>
                       <div className="product__price">
-                    <MdDeleteOutline className="delete__icon" onClick={()=> deleteFromCart(id)}/>
-                        <p className="item__price">${price*quantity}</p>
+                        <MdDeleteOutline
+                          className="delete__icon"
+                          onClick={() => deleteFromCart(id)}
+                        />
+                        <p className="item__price">${price * quantity}</p>
                       </div>
-          
                     </div>
                     <hr />
                   </React.Fragment>
@@ -102,11 +122,11 @@ const estimatedDiscount=5.9
               </div>
               <div className="summary__item">
                 <span className="summary-item-text">Estimated shipping: </span>
-                <span className="summary-item-price">$ 5.90</span>
+                <span className="summary-item-price">$ {estimatedShipping}</span>
               </div>
               <div className="summary__item">
                 <span className="summary-item-text-total">Total: </span>
-                <span className="summary-item-price">$ {subtotal + estimatedShipping - estimatedDiscount}</span>
+                <span className="summary-item-price">$ {(subtotal + estimatedShipping - estimatedDiscount).toFixed(2)}</span>
               </div>
               <Link to="/pay" className="order">CHECKOUT NOW</Link>
             </div>
@@ -121,7 +141,6 @@ const estimatedDiscount=5.9
 const Wrapper = styled.section`
   width: 100%;
   height: 100%;
-
   div.cart__wrapper {
     border-top: 0.2rem solid var(--heading-color);
     border-bottom: 0.2rem solid var(--heading-color);
@@ -240,7 +259,7 @@ const Wrapper = styled.section`
     display: flex;
     padding: 2rem 3rem;
     width: 85rem;
-    margin: 0 auto;
+    margin: 4rem auto;
     justify-content: space-between;
     align-items: center;
     box-shadow: var(--shadowSmall);
@@ -361,12 +380,32 @@ const Wrapper = styled.section`
       width: 100%;
       display: grid;
       grid-template-rows: repeat(2, 1fr);
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
       align-items: center;
       justify-items: center;
       gap: 2rem;
-      height: 45vh;
+      height: 60vh;
     }
+    div.product__item img {
+      display: block;
+      margin: 0 auto;
+      margin-bottom: -2.5rem;
+    }
+    div.paragraphs {
+      display:flex;
+      justify-content: space-evenly;
+      margin-top: 1.5rem;
+    }
+
+    div.product__details h3 {
+      text-align: center;
+    }
+
+    div.product__buttons {
+      width: 100%;
+      margin: 1rem 0;
+    }
+
     div.cart__summary__content {
       padding: 1.5rem 20%;
     }
@@ -376,22 +415,22 @@ const Wrapper = styled.section`
   }
 
   @media only screen and (max-width: 500px) {
-div.product__item {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-grid-template-columns: 1fr;
-height: 52vh;
-align-items: center;
-justify-items: center;
-}
-div.product__item img {
-  width: 12rem;
-  height: 12rem;
-  padding: 0;
-}
-div.product__price{
-margin-left: -10rem;
-}
+    div.product__item {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-columns: 1fr;
+      height: 52vh;
+      align-items: center;
+      justify-items: center;
+    }
+    div.product__item img {
+      width: 14rem;
+      height: 12rem;
+      padding: 0;
+    }
+    div.product__price {
+      margin-left: -10rem;
+    }
   }
 `;
 
