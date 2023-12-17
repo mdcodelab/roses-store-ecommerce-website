@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import News from "./pages/News.js"
 import Cart from "./pages/Cart";
 import Error from "./pages/Error.js";
+import ScrollToTop from "./components/ScrollToTop.js";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import { CartProvider } from "./cartContext";
 
@@ -15,6 +16,7 @@ function App() {
   return (
     <CartProvider>
       <Router>
+      <ScrollToTop></ScrollToTop>
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/news" element={<News></News>}></Route>
