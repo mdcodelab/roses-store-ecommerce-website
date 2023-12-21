@@ -8,7 +8,7 @@ export const dataCategories= [
         title: "roses"
     },
 
-    {id:2,
+    {id: 2,
         category: "baskets",
         image: require("../images/categories/baskets.jpg"),
         title: "baskets"
@@ -23,9 +23,9 @@ export const dataCategories= [
 
     {
         id: 4,
-        category: "Ribbons",
+        category: "ribbons",
         image: require("../images/categories/ribbons.jpg"),
-        title: "Ribbons"
+        title: "ribbons"
     },
 
 ]

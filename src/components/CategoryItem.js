@@ -19,7 +19,7 @@ function CategoryItem({ category }) {
         <div className="category">
           <img src={image} alt={title} />
           <div className="info-category">
-            <h2>{title}</h2>
+            <h2>{title.charAt(0).toUpperCase()+title.slice(1)}</h2>
             <Link to={`/category/${title}`}>SEE MORE</Link>
           </div>
         </div>
