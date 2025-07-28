@@ -24,7 +24,7 @@ function Newsletter() {
 
 const Wrapper = styled.section`
   max-width: 100%;
-  height: 70vh;
+  height: 85vh;
   background-image: url("./images/intro.jpg");
   background-repeat: no-repeat;
   background-position: center;

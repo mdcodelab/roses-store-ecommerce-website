@@ -19,7 +19,7 @@ function Video() {
 
 const Wrapper = styled.div`
   width: 100%;      
-  height: 0;
+  height: 85vh;
   padding-bottom: 35%;
   position: relative;
   iframe {
